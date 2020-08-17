@@ -1,0 +1,11 @@
+{
+  "name": "project-starter",
+  "version": "1.0.0",
+  "description": "Eleventy project starter",
+  "author": "Michal Weisman @zurda <m.weizman@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "prettier": "^2.0.5"
+  }
+}
