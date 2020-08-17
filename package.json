@@ -5,7 +5,15 @@
   "author": "Michal Weisman @zurda <m.weizman@gmail.com>",
   "license": "MIT",
   "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
   "dependencies": {
     "prettier": "^2.0.5"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0"
   }
 }

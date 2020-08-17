@@ -1,0 +1,72 @@
+<style>
+  h1 {
+    text-align: left;
+  }
+
+  .pokemons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 700px) {
+    .pokemons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .pokemon {
+    display: flex;
+    flex-direction: column;
+    max-width: 90vw;
+    height: 400px;
+  }
+
+  .pokemon img {
+    display: block;
+    height: 200px;
+  }
+
+  .pokemon h2 {
+    margin: 0.5rem 0 0;
+  }
+
+  .pokemon .team-members h4 {
+    margin: 0;
+  }
+</style>
+
+<h1>Feds</h1>
+<ul class="pokemons">
+  <li class="pokemon">
+    <img src="https://pa1.narvii.com/5903/37d1c0c56742500ac8920361e8afa4302906eb9c_hq.gif" alt="Squirtle" />
+    <h2>Squirtle</h2>
+    <div class="team-members">
+      <h4>Luke</h4>
+      <h4>Ellie</h4>
+      <h4>Sam</h4>
+      <h4>Elton</h4>
+    </div>
+  </li>
+  <li class="pokemon">
+    <img src="https://i.pinimg.com/originals/3f/d7/a0/3fd7a0503272ce51922b098ad7e0c24d.gif" />
+    <h2>Balbasaur</h2>
+    <div class="team-members">
+      <h4>Karim</h4>
+      <h4>Aaron</h4>
+      <h4>Kate</h4>
+    </div>
+  </li>
+  <li class="pokemon">
+    <img src="https://24.media.tumblr.com/a648b656b23b33755981b7b7a9e3b419/tumblr_mfcqxy9Kg41r72ht7o2_r2_500.gif"
+      alt="charmander" />
+    <h2>Charmander</h2>
+    <div class="team-members">
+      <h4>Gilly</h4>
+      <h4>Alex</h4>
+      <h4>Michal</h4>
+    </div>
+  </li>
+</ul>
