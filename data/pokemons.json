@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "bulbasaur",
+    "team_members": ["Karim", "Aaron", "Kate"],
+    "image": "https://i.pinimg.com/originals/3f/d7/a0/3fd7a0503272ce51922b098ad7e0c24d.gif"
+  },
+  {
+    "id": 7,
+    "name": "squirtle",
+    "team_members": ["Luke", "Ellie", "Sam", "Elton"],
+    "image": "https://pa1.narvii.com/5903/37d1c0c56742500ac8920361e8afa4302906eb9c_hq.gif"
+  },
+  {
+    "id": 4,
+    "name": "charmander",
+    "team_members": ["Gilly", "Matt", "Michal", "Tom"],
+    "image": "https://24.media.tumblr.com/a648b656b23b33755981b7b7a9e3b419/tumblr_mfcqxy9Kg41r72ht7o2_r2_500.gif"
+  }
+]
