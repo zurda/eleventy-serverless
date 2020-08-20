@@ -36,6 +36,22 @@
   .pokemon .team-members h4 {
     margin: 0;
   }
+
+
+  h3 {
+    margin: 1rem 0 0.1rem 0;
+  }
+
+  .abilities {
+    margin: 0;
+    padding-left: 0;
+  }
+
+  .abilities * {
+    list-style: none;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
 </style>
 
 <h1>Feds</h1>
@@ -48,10 +64,33 @@
     <h2></h2>
 
     <div class="team-members"></div>
+
+    <h3>Abilities</h3>
+    <ul class="abilities"></ul>
   </div>
 </template>
 
 <script>
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  function addAbilities(element, abilities) {
+    abilities.forEach((ability) => {
+      const item = document.createElement('li');
+      const label = document.createElement('span');
+
+      label.innerText = capitalize(ability.ability.name);
+      console.log(ability)
+      item.appendChild(label);
+
+      const value = document.createElement('span');
+
+      const abilityElement = element.querySelector('.abilities');
+      abilityElement.appendChild(item);
+    });
+  }
+
   async function initialize() {
     const pokemons = await fetch('/.netlify/functions/pokemons')
       .then((response) => response.json());
@@ -66,7 +105,7 @@
       img.src = pokemon.image;
       img.alt = pokemon.name;
 
-      element.querySelector('h2').innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);;
+      element.querySelector('h2').innerText = capitalize(pokemon.name)
 
       const teamMembers = pokemon.team_members;
 
@@ -76,6 +115,8 @@
         memberName.innerText = member;
         membersEl.appendChild(memberName)
       })
+
+      addAbilities(element, pokemon.abilities);
 
       container.appendChild(element);
     });
