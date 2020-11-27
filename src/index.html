@@ -55,11 +55,13 @@
 </style>
 
 <h1>Feds</h1>
+<button onclick="toggleImages()">Toggle images</button>
 <div class="pokemons"></div>
 
 <template id="pokemon-template">
   <div class="pokemon">
-    <img />
+    <img class="img" />
+    <img class="gif" />
 
     <h2></h2>
 
@@ -71,6 +73,19 @@
 </template>
 
 <script>
+  function toggleImages() {
+    const images = document.querySelectorAll('img.img');
+    const gifs = document.querySelectorAll('img.gif');
+
+    if (gifs[0].style.display === 'none') {
+      images.forEach(img => img.style.display = 'none');
+      gifs.forEach(gif => gif.style.display = 'block');
+    } else {
+      gifs.forEach(img => img.style.display = 'none');
+      images.forEach(gif => gif.style.display = 'block');
+    }
+  }
+
   function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
@@ -81,7 +96,6 @@
       const label = document.createElement('span');
 
       label.innerText = capitalize(ability.ability.name);
-      console.log(ability)
       item.appendChild(label);
 
       const value = document.createElement('span');
@@ -101,9 +115,16 @@
     pokemons.forEach((pokemon) => {
       const element = template.content.cloneNode(true);
 
-      const img = element.querySelector('img');
+      const img = element.querySelector('img.img');
       img.src = pokemon.image;
+
+      const gif = element.querySelector('img.gif');
+      gif.src = pokemon.gif;
+
       img.alt = pokemon.name;
+      gif.alt = pokemon.name;
+
+      gif.style.display = 'none';
 
       element.querySelector('h2').innerText = capitalize(pokemon.name)
 
