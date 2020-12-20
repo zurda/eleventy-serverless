@@ -1,8 +1,21 @@
 const fetch = require('node-fetch');
-const pokemons = require('../data/pokemons.json');
+const { query } = require('./utils/hasura');
 const teamMembers = require('../data/team-members.json');
 
 exports.handler = async () => {
+  const { pokemons } = await query({
+    query: `
+      query {
+        pokemons {
+          name
+          gif
+          image
+        }
+      }
+    `,
+  });
+
+
   const promises = pokemons.map((pokemon) => {
     const membersObj = teamMembers.filter((member) => member.team_name.toLowerCase() === pokemon.name.toLowerCase());
     const team_members = membersObj.map(member => member.name);
