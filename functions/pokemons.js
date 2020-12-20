@@ -10,10 +10,11 @@ exports.handler = async () => {
     return fetch(api)
       .then((response) => response.json())
       .then((data) => {
-        const { weight, height, abilities } = data;
+        const { weight, height, abilities, id } = data;
 
         return {
           ...pokemon,
+          id,
           weight,
           height,
           abilities,
