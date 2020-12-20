@@ -121,12 +121,12 @@
       const gif = element.querySelector('img.gif');
       gif.src = pokemon.gif;
 
-      img.alt = pokemon.name;
-      gif.alt = pokemon.name;
+      img.alt = pokemon.pokemon_name;
+      gif.alt = pokemon.pokemon_name;
 
       gif.style.display = 'none';
 
-      element.querySelector('h2').innerText = capitalize(pokemon.name)
+      element.querySelector('h2').innerText = capitalize(pokemon.pokemon_name)
 
       const teamMembers = pokemon.team_members;
 

@@ -7,7 +7,7 @@ exports.handler = async () => {
     query: `
       query {
         pokemons {
-          name
+          pokemon_name
           gif
           image
         }
@@ -17,9 +17,9 @@ exports.handler = async () => {
 
 
   const promises = pokemons.map((pokemon) => {
-    const membersObj = teamMembers.filter((member) => member.team_name.toLowerCase() === pokemon.name.toLowerCase());
+    const membersObj = teamMembers.filter((member) => member.team_name.toLowerCase() === pokemon.pokemon_name.toLowerCase());
     const team_members = membersObj.map(member => member.name);
-    const api = `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`;
+    const api = `https://pokeapi.co/api/v2/pokemon/${pokemon.pokemon_name}`;
     return fetch(api)
       .then((response) => response.json())
       .then((data) => {
