@@ -18,7 +18,7 @@ exports.handler = async () => {
 
   const promises = pokemons.map((pokemon) => {
     const membersObj = teamMembers.filter((member) => member.team_name.toLowerCase() === pokemon.pokemon_name.toLowerCase());
-    const team_members = membersObj.map(member => member.name);
+    const team_members = membersObj.map(member => member.member_name);
     const api = `https://pokeapi.co/api/v2/pokemon/${pokemon.pokemon_name}`;
     return fetch(api)
       .then((response) => response.json())
