@@ -54,6 +54,8 @@
   }
 
   button {
+    display: none;
+    align-self: center;
     background: var(--green);
     border: 0;
     border-radius: 0.25rem;
@@ -63,11 +65,33 @@
     padding: 0.5rem 1rem;
     text-transform: uppercase;
   }
-</style>
 
+  .loader {
+    display: block;
+    margin: 0 auto;
+    border: 16px solid var(--light-grey);
+    border-top: 16px solid var(--blue);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
 <h1>Feds</h1>
-<button onclick="toggleImages()">Toggle images</button>
+<div class="loader"></div>
 <div class="pokemons"></div>
+
+<button class="toggle-button" onclick="toggleImages()">Toggle images</button>
 
 <template id="pokemon-template">
   <div class="pokemon">
@@ -154,6 +178,12 @@
 
       container.appendChild(element);
     });
+
+    const toggleButton = document.querySelector('button.toggle-button');
+    toggleButton.style.display = 'block';
+
+    const loader = document.querySelector('div.loader');
+    loader.style.display = 'none';
   }
 
   initialize();
