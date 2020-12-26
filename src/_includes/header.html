@@ -7,6 +7,9 @@
   header .logo-wrapper {
     margin: 0 auto;
     max-width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   header .logo-wrapper h1 {
     display: inline-block;
@@ -15,6 +18,11 @@
     margin: 0;
     color: var(--white);
   }
+
+  .header-link {
+      padding-left: 1rem;
+      color: var(--white);
+  }
 </style>
 
 <header>
@@ -22,6 +30,11 @@
     <a href="/" rel="home" class="home-link">
       <h1>{{ meta.title }}</h1>
     </a>
+    <div>
+      {% for page in collections.pages %}
+        <a href={{ page.url }} class="header-link">{{ page.data.title }}</a>
+      {% endfor %}
+    </div>
   </div>
 
   <div class="top-bar"></div>

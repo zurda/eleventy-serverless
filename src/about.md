@@ -1,4 +1,5 @@
 ---
+tags: pages
 title: About
 ---
 
