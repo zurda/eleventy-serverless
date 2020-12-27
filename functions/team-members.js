@@ -7,6 +7,7 @@ exports.handler = async (event) => {
             team_members{
                 team_name
                 member_name
+                github_user
             }
         }
     `,

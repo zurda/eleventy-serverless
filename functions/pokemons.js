@@ -13,6 +13,7 @@ exports.handler = async () => {
           team_members{
             team_name
             member_name
+            github_user
           }
       }
     `,
@@ -21,7 +22,6 @@ exports.handler = async () => {
 
   const promises = pokemons.map((pokemon) => {
     const membersObj = teamMembers.filter((member) => member.team_name.toLowerCase() === pokemon.pokemon_name.toLowerCase());
-    const team_members = membersObj.map(member => member.member_name);
     const api = `https://pokeapi.co/api/v2/pokemon/${pokemon.pokemon_name}`;
     return fetch(api)
       .then((response) => response.json())
@@ -34,7 +34,7 @@ exports.handler = async () => {
           weight,
           height,
           abilities,
-          team_members
+          team_members: membersObj
         };
       });
   });

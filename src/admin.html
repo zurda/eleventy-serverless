@@ -70,7 +70,8 @@ title: Add a team member
 <div class="message"></div>
 <form id="add-team-member">
     <label for="member_name">Member Name<input type="text" id="member_name" name="member_name" required /></label>
-    <label for="team_name">Team Name <input type="text" id="team_name" name="team_name" required /></label>
+    <label for="team_name">Team Name<input type="text" id="team_name" name="team_name" required /></label>
+    <label for="github_user">Github user<input type="text" id="github_user" name="github_user" /></label>
     <button type="submit">Add New Team Member</button>
 </form>
 
@@ -95,7 +96,6 @@ title: Add a team member
 
     async function handleSubmit(event) {
         event.preventDefault();
-
         const { access_token } = netlifyIdentity.currentUser().token;
         const data = new FormData(event.target);
 
@@ -107,6 +107,8 @@ title: Add a team member
             body: JSON.stringify({
                 member_name: data.get('member_name'),
                 team_name: data.get('team_name'),
+                // set value to null if this is not set, otherwise value is set to ''
+                github_user: data.get('github_user') || null,
             }),
         }).then((response) => {
             document.querySelector(

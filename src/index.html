@@ -37,6 +37,12 @@
     margin: 0;
   }
 
+  .pokemon .team-members h4 a {
+    font-weight: normal;
+    padding-left: 0.4rem;
+    color: var(--grey);
+  }
+
 
   h3 {
     margin: 1rem 0 0.1rem 0;
@@ -168,10 +174,19 @@
       const teamMembers = pokemon.team_members;
 
       const membersEl = element.querySelector('.team-members');
-      teamMembers.forEach(member => {
+      teamMembers.forEach(({member_name, github_user}) => {
+
         const memberName = document.createElement('h4');
-        memberName.innerText = member;
-        membersEl.appendChild(memberName)
+        memberName.innerText = member_name;
+
+        if (github_user) {
+          const memberGithub = document.createElement('a');
+          memberGithub.innerText = `@${github_user}`;
+          memberGithub.href = `https://github.com/${github_user}`;
+          memberName.appendChild(memberGithub)
+        }
+        
+        membersEl.appendChild(memberName);
       })
 
       addAbilities(element, pokemon.abilities);
