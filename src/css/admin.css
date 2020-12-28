@@ -1,0 +1,59 @@
+h1,
+form,
+.message,
+.logout {
+    margin: 0 auto;
+    max-width: 400px;
+    width: 90vw;
+}
+
+.logout {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+label,
+button {
+    display: block;
+    font-size: 1rem;
+    font-variant: small-caps;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+}
+
+label {
+    margin: 0.5rem 0 0;
+    text-transform: lowercase;
+}
+
+input, select {
+    border: 1px solid var(--text-muted);
+    border-radius: 0.25rem;
+    display: block;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+button {
+    background: var(--green);
+    border: 0;
+    border-radius: 0.25rem;
+    color: var(--white);
+    font-family: var(--font-family);
+    margin: 1rem 0 0;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+}
+
+.message {
+    background: var(--orange);
+    border-radius: 0.25rem;
+    font-family: monospace;
+    padding: 1rem;
+}
+
+.message:empty {
+    display: none;
+}
