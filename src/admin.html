@@ -73,9 +73,6 @@ title: Add a team member
     <label for="team_name">Team Name
     <select id="team_name" name="team_name" required >
         <option value=""></option>
-        <option value="bulbasaur">Bulbasaur</option>
-        <option value="charmander">Charmander</option>
-        <option value="squirtle">Squirtle</option>
     </select>
     </label>
     <label for="github_user">Github user<input type="text" id="github_user" name="github_user" /></label>
@@ -101,6 +98,18 @@ title: Add a team member
         netlifyIdentity.logout();
     });
 
+    async function createDropdown() {
+        const teams = await fetch('/.netlify/functions/teams')
+            .then((response) => response.json());
+        const selectEl = document.querySelector('#team_name');
+        teams.forEach(team => {
+            const optionEl = document.createElement('option');
+            optionEl.value = team;
+            optionEl.innerText = team;
+            selectEl.appendChild(optionEl);
+        });
+    }
+
     async function handleSubmit(event) {
         event.preventDefault();
         const { access_token } = netlifyIdentity.currentUser().token;
@@ -123,6 +132,8 @@ title: Add a team member
             ).innerText = `Response: ${response.status} — ${response.statusText}`;
         });
     }
+
+    createDropdown();
 
     document.querySelector('#add-team-member').addEventListener('submit', handleSubmit);
 </script>
