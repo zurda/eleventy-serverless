@@ -22,6 +22,8 @@ exports.handler = async () => {
 
   const promises = pokemons.map((pokemon) => {
     const membersObj = teamMembers.filter((member) => member.team_name.toLowerCase() === pokemon.pokemon_name.toLowerCase());
+    // remove unnecessary field: team_name
+    const membersFields = membersObj.map(({member_name, github_user}) => ({member_name, github_user}));
     const api = `https://pokeapi.co/api/v2/pokemon/${pokemon.pokemon_name}`;
     return fetch(api)
       .then((response) => response.json())
@@ -34,7 +36,7 @@ exports.handler = async () => {
           weight,
           height,
           abilities,
-          team_members: membersObj
+          team_members: membersFields
         };
       });
   });
