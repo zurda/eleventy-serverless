@@ -1,0 +1,66 @@
+<style>
+    .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    .pokeball {
+        width: 120px;
+        height: 120px;
+        border-radius: 50% ;
+        position: relative;
+        overflow: hidden;
+        border: 16px solid var(--grey);
+        animation: frames .6s  ease-in-out 0s infinite;
+    }
+
+    .pokeball:after{
+        content: '';
+        position: absolute;
+        width: 32px;
+        height: 30px;
+        border-bottom: 16px solid var(--grey);
+        top: 6px
+    }
+
+    .pokeball:before{
+        content: '';
+        position: absolute;
+        width: 32px;
+        height: 30px;
+        border-bottom: 16px solid var(--grey);
+        top: 6px;
+        right: 0px;
+    }
+
+    .ballcenter{
+        content: '';
+        position: absolute;
+        width: 36px;
+        height:36px;
+        border: 8px solid var(--grey);
+        border-radius: 50%;
+        bottom: 26px;
+        right: 26px;
+        z-index: 1;
+    }
+
+    @keyframes frames{
+        0% {
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<div class="loader">
+    <div class="pokeball">
+        <div class="ballcenter">
+        </div>
+    </div>
+</div>
