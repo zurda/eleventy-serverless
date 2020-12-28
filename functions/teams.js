@@ -1,29 +1,24 @@
 const { query } = require('./utils/hasura');
 
 exports.handler = async (_) => {
-    const { team_members: teamMembers } = await query({
+    const { fed_teams: fedTeams } = await query({
     query: `
         query {
-            team_members{
+            fed_teams{
                 team_name
             }
         }
     `,
     });
     
-    if (!teamMembers.length) {
+    if (!fedTeams.length) {
         return {
             statusCode: 404,
             body: 'Not Found',
         };
     }
 
-    const teams = [];
-    teamMembers.forEach(team => {
-        if (teams.indexOf(team.team_name) === -1) {
-            teams.push(team.team_name) 
-        }
-    })
+    const teams = fedTeams.map(team => team.team_name)
 
     return {
         statusCode: 200,
