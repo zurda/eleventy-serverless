@@ -2,10 +2,10 @@ const fetch = require('node-fetch');
 const { query } = require('./utils/hasura');
 
 exports.handler = async () => {
-  const { pokemons, team_members: teamMembers } = await query({
+  const { pokemons_assets: pokemons, team_members: teamMembers } = await query({
     query: `
       query {
-        pokemons {
+        pokemons_assets {
           pokemon_name
           gif
           image
