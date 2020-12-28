@@ -32,7 +32,7 @@ title: Add a team member
         text-transform: lowercase;
     }
 
-    input {
+    input, select {
         border: 1px solid var(--text-muted);
         border-radius: 0.25rem;
         display: block;
@@ -70,7 +70,14 @@ title: Add a team member
 <div class="message"></div>
 <form id="add-team-member">
     <label for="member_name">Member Name<input type="text" id="member_name" name="member_name" required /></label>
-    <label for="team_name">Team Name<input type="text" id="team_name" name="team_name" required /></label>
+    <label for="team_name">Team Name
+    <select id="team_name" name="team_name" required >
+        <option value=""></option>
+        <option value="bulbasaur">Bulbasaur</option>
+        <option value="charmander">Charmander</option>
+        <option value="squirtle">Squirtle</option>
+    </select>
+    </label>
     <label for="github_user">Github user<input type="text" id="github_user" name="github_user" /></label>
     <button type="submit">Add New Team Member</button>
 </form>
