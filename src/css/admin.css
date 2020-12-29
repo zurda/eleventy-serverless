@@ -65,3 +65,7 @@ button {
 .selected-team-img img {
     max-width: 20rem;
 }
+
+.content-wrapper {
+    display: none;
+}

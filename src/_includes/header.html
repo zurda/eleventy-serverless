@@ -4,6 +4,7 @@
     background: var(--black);
     color: var(--white);
   }
+
   header .logo-wrapper {
     margin: 0 auto;
     max-width: 90%;
@@ -11,6 +12,7 @@
     justify-content: space-between;
     align-items: center;
   }
+
   header .logo-wrapper h1 {
     display: inline-block;
     text-align: left;
@@ -20,8 +22,8 @@
   }
 
   .header-link {
-      padding-left: 1rem;
-      color: var(--white);
+    padding-left: 1rem;
+    color: var(--white);
   }
 </style>
 
@@ -32,7 +34,7 @@
     </a>
     <div>
       {% for page in collections.pages %}
-        <a href={{ page.url }} class="header-link">{{ page.data.title }}</a>
+      <a href={{ page.url }} class="header-link">{{ page.data.url_title }}</a>
       {% endfor %}
     </div>
   </div>

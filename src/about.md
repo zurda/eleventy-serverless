@@ -1,6 +1,7 @@
 ---
 tags: pages
 title: About
+url_title: About
 ---
 
 This is a side project used to explore:

@@ -1,32 +1,38 @@
 ---
 tags: pages
-title: Add a team member
+url_title: Add a team member
 ---
 
 <link rel="stylesheet" href="/css/admin.css">
 
-<a href="#logout" class="logout">Log Out</a>
+<div class="content-wrapper">
+    <h1>Add a team member</h1>
+    <a href="#logout" class="logout">Log Out</a>
 
-<div class="message"></div>
-<form id="add-team-member">
-    <div>
-        <label for="member_name">Member Name<input type="text" id="member_name" name="member_name" required /></label>
-        <label for="team_name">Team Name
-            <select id="team_name" name="team_name" onchange="displayChosenTeam(event)" required>
-                <option value=""></option>
-            </select>
-        </label>
-        <label for="github_user">Github user<input type="text" id="github_user" name="github_user" /></label>
-        <button type="submit">Add New Team Member</button>
-    </div>
-    <div class="selected-team-img"></div>
-</form>
+    <div class="message"></div>
+    <form id="add-team-member">
+        <div>
+            <label for="member_name">Member Name<input type="text" id="member_name" name="member_name"
+                    required /></label>
+            <label for="team_name">Team Name
+                <select id="team_name" name="team_name" onchange="displayChosenTeam(event)" required>
+                    <option value=""></option>
+                </select>
+            </label>
+            <label for="github_user">Github user<input type="text" id="github_user" name="github_user" /></label>
+            <button type="submit">Add New Team Member</button>
+        </div>
+        <div class="selected-team-img"></div>
+    </form>
+</div>
 
 <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 <script>
     function handleIdentityEvent(user) {
         if (user && user.token) {
+            const form = document.querySelector('div.content-wrapper');
+            form.style.display = 'block';
             return;
         }
 
