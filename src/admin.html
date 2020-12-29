@@ -9,14 +9,17 @@ title: Add a team member
 
 <div class="message"></div>
 <form id="add-team-member">
-    <label for="member_name">Member Name<input type="text" id="member_name" name="member_name" required /></label>
-    <label for="team_name">Team Name
-    <select id="team_name" name="team_name" required >
-        <option value=""></option>
-    </select>
-    </label>
-    <label for="github_user">Github user<input type="text" id="github_user" name="github_user" /></label>
-    <button type="submit">Add New Team Member</button>
+    <div>
+        <label for="member_name">Member Name<input type="text" id="member_name" name="member_name" required /></label>
+        <label for="team_name">Team Name
+            <select id="team_name" name="team_name" onchange="displayChosenTeam(event)" required>
+                <option value=""></option>
+            </select>
+        </label>
+        <label for="github_user">Github user<input type="text" id="github_user" name="github_user" /></label>
+        <button type="submit">Add New Team Member</button>
+    </div>
+    <div class="selected-team-img"></div>
 </form>
 
 <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -48,6 +51,22 @@ title: Add a team member
             optionEl.innerText = team;
             selectEl.appendChild(optionEl);
         });
+    }
+
+    async function displayChosenTeam(event) {
+        const pokemons = await fetch('/.netlify/functions/pokemons')
+            .then((response) => response.json());
+        const chosenPokemon = pokemons.find(pokemon => event.target.value === pokemon.pokemon_name);
+        const pokemonImg = document.createElement('img');
+        const selectEl = document.querySelector('.selected-team-img');
+        if (selectEl.firstChild) {
+            if (chosenPokemon === undefined) {
+                selectEl.removeChild(selectEl.firstChild)
+            } else selectEl.firstChild.src = chosenPokemon.gif;
+        } else {
+            pokemonImg.src = chosenPokemon.gif;
+            selectEl.appendChild(pokemonImg)
+        }
     }
 
     async function handleSubmit(event) {
