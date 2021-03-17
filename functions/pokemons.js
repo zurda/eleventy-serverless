@@ -42,7 +42,7 @@ exports.handler = async () => {
           id,
           weight,
           height,
-          abilities,
+          abilities: [...abilities, { ability: { name: fedTeamObj.oe_specialty } }],
           team_members: membersFields,
           oe_specialty: fedTeamObj.oe_specialty
         };
