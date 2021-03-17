@@ -29,15 +29,18 @@ h1 {
     height: 200px;
 }
 
-.pokemon h2 {
+.pokemon h2,
+.ash h2 {
     margin: 0.5rem 0 0;
 }
 
-.pokemon .team-members h4 {
+.pokemon .team-members h4,
+.ash .team-members h4 {
     margin: 0;
 }
 
-.pokemon .team-members h4 a {
+.pokemon .team-members h4 a,
+.ash .team-members h4 a {
     font-weight: normal;
     padding-left: 0.4rem;
     color: var(--grey);
@@ -70,4 +73,17 @@ button {
     margin: 1rem auto;
     padding: 0.5rem 1rem;
     text-transform: uppercase;
+}
+
+.ash {
+    margin-bottom: 40px;
+}
+
+.ash img {
+    width: 200px;
+    display: block;
+}
+
+.ash img.gif {
+    display: none;
 }
