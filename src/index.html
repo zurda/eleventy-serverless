@@ -31,12 +31,12 @@
     const images = document.querySelectorAll('img.img');
     const gifs = document.querySelectorAll('img.gif');
 
-    if (gifs[0].style.display === 'none') {
-      images.forEach(img => img.style.display = 'none');
-      gifs.forEach(gif => gif.style.display = 'block');
-    } else {
+    if (images[0].style.display === 'none') {
       gifs.forEach(img => img.style.display = 'none');
       images.forEach(gif => gif.style.display = 'block');
+    } else {
+      images.forEach(img => img.style.display = 'none');
+      gifs.forEach(gif => gif.style.display = 'block');
     }
   }
 
