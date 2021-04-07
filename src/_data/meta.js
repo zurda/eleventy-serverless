@@ -1,4 +1,4 @@
 module.exports = {
-  title: '11ty',
+  title: 'Feds',
   repo: 'https://github.com/zurda/eleventy-serverless',
 };
