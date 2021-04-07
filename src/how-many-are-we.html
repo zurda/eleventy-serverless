@@ -1,0 +1,33 @@
+---
+tags: pages
+url_title: How many are we?
+---
+
+<link rel="stylesheet" href="/css/index.css">
+
+  <h1>How many are we?</h1>
+
+  <h2 class="how-many-container"></h2>
+  <h3 class="number-fact"></h3>
+
+{% include loader.html %}
+
+<div class="pokemons"></div>
+
+<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+  async function initialize() {
+    const team_members = await fetch('/.netlify/functions/team-members')
+      .then((response) => response.json());
+
+    const container = document.querySelector(".how-many-container");
+    const count = team_members.length + 1
+    container.innerText = `We are ${count}`
+
+    const loader = document.querySelector('div.loader');
+    loader.style.display = 'none';
+  }
+
+  initialize();
+</script>
