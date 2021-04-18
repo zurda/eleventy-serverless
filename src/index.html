@@ -3,7 +3,7 @@
   <h1>How many are we?</h1>
 
   <h2 class="how-many-container"></h2>
-  <h3 class="number-fact"></h3>
+  <p class="number-fact"></p>
 
 {% include loader.html %}
 
@@ -13,15 +13,18 @@
 
 <script>
   async function initialize() {
-    const team_members = await fetch('/.netlify/functions/team-members')
+    const triviaData = await fetch('/.netlify/functions/number-trivia')
       .then((response) => response.json());
 
     const container = document.querySelector(".how-many-container");
-    const count = team_members.length + 1
+    const count = triviaData.count
     container.innerText = `We are ${count}`
 
     const loader = document.querySelector('div.loader');
     loader.style.display = 'none';
+
+    const number_container = document.querySelector(".number-fact");
+    number_container.innerText = triviaData.trivia;
   }
 
   initialize();
