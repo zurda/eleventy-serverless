@@ -87,3 +87,9 @@ button {
 .ash img.gif {
     display: none;
 }
+
+img.gh-icon {
+    display: inline;
+    height: 16px;
+    width: 16px;
+}

@@ -95,11 +95,18 @@ url_title: Who we are
         const memberName = document.createElement('h4');
         memberName.innerText = member_name;
 
+
         if (github_user) {
           const memberGithub = document.createElement('a');
-          memberGithub.innerText = `@${github_user}`;
           memberGithub.href = `https://github.com/${github_user}`;
-          memberName.appendChild(memberGithub)
+
+          const ghIcon = document.createElement('img');
+          ghIcon.src = '/images/gh-icon.png'
+          ghIcon.className = 'gh-icon'
+
+          memberGithub.appendChild(ghIcon);
+
+          memberName.appendChild(memberGithub);
         }
         
         membersEl.appendChild(memberName);
