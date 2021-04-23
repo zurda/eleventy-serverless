@@ -27,7 +27,7 @@ exports.handler = async () => {
     `,
   });
 
-  const numberFact = await getNumberTrivia(teamMembers.length + 1);
+  const numberFact = await getNumberTrivia(teamMembers.length);
 
   return {
     statusCode: 200,
