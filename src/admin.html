@@ -37,6 +37,12 @@ url_title: Add a team member
         if (isUserAdmin(user)) {
             const form = document.querySelector('div.content-wrapper');
             form.style.display = 'block';
+
+            if (user.user_metadata.full_name) {
+                const greeting = document.querySelector('p.greeting');
+                greeting.innerText = `Hi ${user.user_metadata.full_name} 👋`
+            }
+
             return;
         }
 
