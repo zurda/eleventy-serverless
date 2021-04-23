@@ -1,11 +1,17 @@
 <link rel="stylesheet" href="/css/login.css">
 
+<div class="message-placeholder"></div>
 <div data-netlify-identity-button></div>
 
 <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 <script>
     function handleLogin(user) {
+        if (user && user.token) {
+            const placeholder = document.querySelector('div.message-placeholder');
+            placeholder.classList.add("message");
+            placeholder.innerText = "Adding team members is currently only available for admins. Please request additional permissions from the site owner."
+        }
         if (!user || !user.token || !user.app_metadata || !user.app_metadata.roles || !user.app_metadata.roles.includes("admin")) {
             return;
         }
