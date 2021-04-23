@@ -6,7 +6,7 @@
 
 <script>
     function handleLogin(user) {
-        if (!user || !user.token) {
+        if (!user || !user.token || !user.app_metadata || !user.app_metadata.roles || !user.app_metadata.roles.includes("admin")) {
             return;
         }
 

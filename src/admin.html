@@ -29,8 +29,12 @@ url_title: Add a team member
 <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 <script>
+    function isUserAdmin(user) {
+        return user && user.token && user.app_metadata && user.app_metadata.roles && user.app_metadata.roles.includes("admin");
+    }
+
     function handleIdentityEvent(user) {
-        if (user && user.token) {
+        if (isUserAdmin(user)) {
             const form = document.querySelector('div.content-wrapper');
             form.style.display = 'block';
             return;
