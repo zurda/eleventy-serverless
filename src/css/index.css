@@ -1,86 +1,15 @@
-
-
-
-@media screen and (max-width: 700px) {
-    .pokemons {
-        flex-direction: column;
-        align-items: center;
-    }
+.container {
+    align-items: center;
 }
 
-.pokemon {
-    display: flex;
-    flex-direction: column;
-    max-width: 90vw;
-    height: fit-content;
+.team-members {
+    padding-top: 2rem;
+    width: 70%;
 }
 
-.pokemon img {
-    display: block;
-    height: 200px;
-}
-
-.pokemon h2,
-.ash h2 {
-    margin: 0.5rem 0 0;
-}
-
-.pokemon .team-members h4,
-.ash .team-members h4 {
-    margin: 0;
-}
-
-.pokemon .team-members h4 a,
-.ash .team-members h4 a {
-    font-weight: normal;
-    padding-left: 0.4rem;
-    color: var(--grey);
-}
-
-
-h3 {
-    margin: 1rem 0 0.1rem 0;
-}
-
-.abilities {
-    margin: 0;
-    padding-left: 0;
-}
-
-.abilities * {
-    list-style: none;
-    text-transform: uppercase;
-    font-size: 12px;
-}
-
-button {
-    display: none;
-    align-self: center;
-    background: var(--green);
-    border: 0;
-    border-radius: 0.25rem;
-    color: var(--white);
-    font-family: var(--font-family);
-    margin: 1rem auto;
-    padding: 0.5rem 1rem;
-    text-transform: uppercase;
-}
-
-.ash {
-    margin-bottom: 40px;
-}
-
-.ash img {
-    width: 200px;
-    display: block;
-}
-
-.ash img.gif {
-    display: none;
-}
-
-img.gh-icon {
+img.github_avatar {
     display: inline;
-    height: 16px;
-    width: 16px;
+    margin: 0.1rem 0.2rem;
+    height: 64px;
+    width: 64px;
 }

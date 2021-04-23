@@ -7,18 +7,34 @@
 
 {% include loader.html %}
 
-<div class="pokemons"></div>
+<div class="team-members"></div>
 
 <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 <script>
   async function initialize() {
+    const teamMembers = await fetch('/.netlify/functions/team-members')
+      .then((response) => response.json());
+
     const triviaData = await fetch('/.netlify/functions/number-trivia')
       .then((response) => response.json());
 
     const container = document.querySelector(".how-many-container");
     const count = triviaData.count
     container.innerText = `We are ${count}`
+
+    const membersEl = document.querySelector('.team-members');
+    teamMembers.forEach(({ member_name, github_user }) => {
+
+      const memberImg = document.createElement('img');
+      memberImg.classList.add('github_avatar');
+      memberGithub = document.createElement('a');
+      memberGithub.href = `https://github.com/${github_user || 'octocat'}`;
+      memberImg.src = `https://github.com/${github_user || 'octocat'}.png`;
+
+      memberGithub.appendChild(memberImg);
+      membersEl.appendChild(memberGithub);
+    })
 
     const loader = document.querySelector('div.loader');
     loader.style.display = 'none';
