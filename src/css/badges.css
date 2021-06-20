@@ -1,0 +1,14 @@
+.title,
+.description {
+  margin: 0.2rem;
+}
+
+.title {
+  margin-top: 0.6rem;
+  color: var(--grey);
+}
+
+span.emoji {
+  display: inline-block;
+  padding-right: 0.5rem;
+}

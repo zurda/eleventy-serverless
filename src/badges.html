@@ -1,0 +1,70 @@
+---
+tags: pages
+title: Badges
+url_title: Badges
+---
+
+<link rel="stylesheet" href="/css/badges.css">
+
+<div class="badges"></div>
+
+{% include loader.html %}
+
+<template id="badge-template">
+  <div class="badge">
+    <h4 class="title"><span class="emoji"></span><span class="content"></span></h4>
+    <p class="description"></p>
+  </div>
+</template>
+
+<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  async function initialize() {
+    const { badges, badgesCategory } = await fetch('/.netlify/functions/badges')
+      .then((response) => response.json());
+
+    //create category containers
+    badgesCategory.forEach(category => {
+      const categoryContainer = document.createElement('div');
+      categoryContainer.classList.add(category.category_name);
+
+      const h3 = document.createElement('h3');
+      h3.innerText = capitalize(category.category_name);
+
+      categoryContainer.appendChild(h3);
+
+      const badgesContainer = document.querySelector('.badges');
+      badgesContainer.appendChild(categoryContainer);
+    })
+
+    const template = document.querySelector('#badge-template');
+
+    badges.forEach((badge) => {
+      const element = template.content.cloneNode(true);
+
+      const title = element.querySelector('h4.title > span.content');
+      title.innerText = badge.name;
+
+      const emoji = element.querySelector('h4.title > span.emoji');
+      emoji.innerText = badge.emoji;
+
+      const description = element.querySelector('p.description');
+      description.innerText = badge.description;
+
+      const loader = document.querySelector('div.loader');
+      loader.style.display = 'none';
+
+      const container = document.querySelector(`.badges > .${badge.category_name}`);
+      console.log(container)
+      container.appendChild(element);
+    });
+  }
+
+
+  initialize();
+</script>

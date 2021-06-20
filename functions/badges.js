@@ -40,6 +40,6 @@ exports.handler = async () => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify(badges),
+    body: JSON.stringify({ badges, badgesCategory }),
   };
 };
